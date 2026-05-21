@@ -1,0 +1,62 @@
+.imgBox
+{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    overflow: hidden;
+    box-shadow: 2px 2px 10px rgba(0,0,0);
+    background-color: white;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0; /* keep avatar size fixed */
+}
+.img
+{
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover; /* avoid stretching when image ratio changes */
+}
+.userInp
+{
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 20px;
+}
+.aiRes
+{
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 20px;
+}
+.chats
+{
+    width: 100%;
+    height: fit-content;
+    padding: 30px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    color: var(--color);
+}
+
+.chats .msg
+{
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.chats .msg p
+{
+    width: 100%;
+    margin: 0;
+    text-align: left;
+    line-height: 1.5;
+}
