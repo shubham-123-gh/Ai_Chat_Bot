@@ -1,4 +1,4 @@
-import "./Seperator.css"
+import "./seperator.css"
 
 const Seperator =()=>
 {
