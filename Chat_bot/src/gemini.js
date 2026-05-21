@@ -19,14 +19,29 @@ const generationConfig =
 
 async function run(prompt) 
 {
-    const chatSession = model.startChat({
-        generationConfig,
-        history:[
-        ],
-    });
+    try {
+        if (!prompt || prompt.trim() === '') {
+            throw new Error('Prompt cannot be empty');
+        }
 
-    
-    const result = await chatSession.sendMessage(prompt);
-    return(result.response.text());
+        const chatSession = model.startChat({
+            generationConfig,
+            history:[
+            ],
+        });
+
+        
+        const result = await chatSession.sendMessage(prompt);
+        return(result.response.text());
+    } catch (error) {
+        console.error('API Error:', error);
+        if (error.message.includes('API key')) {
+            throw new Error('Invalid API key. Please check your VITE_AI_API_KEY');
+        }
+        if (error.message.includes('429')) {
+            throw new Error('Rate limit exceeded. Please try again later');
+        }
+        throw new Error(`Failed to get response: ${error.message}`);
+    }
 }
 export default run;

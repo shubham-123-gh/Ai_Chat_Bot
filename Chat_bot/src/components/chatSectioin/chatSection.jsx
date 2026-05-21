@@ -16,10 +16,16 @@ const ChatSection = ()=>
     {
         const prompt = inpData.current.value?.trim();
         if (!prompt) {
+            alert("Please enter a message");
             return;
         }
-        response(prompt);
-        inpData.current.value = "";
+        try {
+            response(prompt);
+            inpData.current.value = "";
+        } catch (error) {
+            alert(`Error: ${error.message}`);
+            console.error(error);
+        }
     }
     const handleOnKeyDown = (event)=>
     {
